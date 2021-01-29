@@ -19,6 +19,12 @@
   "homepage": "https://github.com/nori3636/discordbot_codehighlight#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "eslint": "^7.18.0"
+    "eslint": "^7.18.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "@types/node-fetch": "^2.5.8",
+    "typescript": "^4.1.3"
   }
 }
