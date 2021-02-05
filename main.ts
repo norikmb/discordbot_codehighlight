@@ -21,7 +21,7 @@ client.on("message", (message) => {
     message.channel.send({
       embed: {
         color: 7506394,
-        description: "やっはろー",
+        description: "!pong",
       },
     });
   }
@@ -48,12 +48,14 @@ client.on("message", (message) => {
           //   sendtext = sendtext + array[i]+'\n'; 
           // }
           sendtext  = lines.slice(begin, end).join('\n');
-          message.channel.send({
-            embed: {
-              color: 7506394,
-              description: "```\n"+ sendtext + " ```",
-            },
-          });
+           message.channel.send(
+            //  {
+          //   embed: {
+          //     color: 7506394,
+          //     description: "```js\n"+ sendtext + " ```",
+          //   },
+          // }
+          "```js\n"+ sendtext + " ```",);
 
         } catch (error) {
           console.log(error);
@@ -65,4 +67,4 @@ client.on("message", (message) => {
   }
 });
 // トークンを使ってDiscordにログイン
-client.login(token.token);
+client.login();
