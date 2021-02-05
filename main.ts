@@ -39,6 +39,7 @@ client.on("message", (message) => {
           let sendtext = ''; 
           const body = await response.text();
           const lines = body.split('\n');
+          const fileType = body.split('/').slice(-1);
           const LineNumber = paragraph[1].split("-");
           const begin = Number(LineNumber[0].substring(1))-1;
           const end  = Number(LineNumber[1].substring(1));
@@ -55,7 +56,7 @@ client.on("message", (message) => {
           //     description: "```js\n"+ sendtext + " ```",
           //   },
           // }
-          "```js\n"+ sendtext + " ```",);
+            "```" + `${fileType}\n` + sendtext + " ```");
 
         } catch (error) {
           console.log(error);
