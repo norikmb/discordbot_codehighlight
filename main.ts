@@ -45,7 +45,10 @@ client.on("message", (message) => {
           sendtext  = lines.slice(begin, end).join('\n');
           // テンプレートリテラル
            message.channel.send(
-          ` \`\`\`${fileType}\n${sendtext}  \`\`\``);
+          ` \`\`\`${fileType}\n${sendtext}  \`\`\``
+          
+          
+          );
         } catch (error) {
           console.log(error);
         }
