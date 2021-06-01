@@ -43,7 +43,8 @@ var node_fetch_1 = require("node-fetch");
 // const Discord = require('discord.js');
 // 新しいDiscordクライアントを作成
 var client = new discord_js_1.Client();
-var token = process.env.DISCORD_BOT_TOKEN;
+var token = "ODA0MzYxOTAyMzM5MTI5Mzc0.YBLOZQ.AYEkhYSldFZUTFCdrHylzHbaE-I";
+// process.env.DISCORD_BOT_TOKEN;
 // クライアントの準備ができた際に実行されます
 // このイベントはログインした後に１度だけ実行します
 client.once('ready', function () {
