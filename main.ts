@@ -7,6 +7,7 @@ import fetch from "node-fetch";
 
 // 新しいDiscordクライアントを作成
 const client = new Client();
+const token = process.env.DISCORD_BOT_TOKEN;
 
 // クライアントの準備ができた際に実行されます
 // このイベントはログインした後に１度だけ実行します
@@ -53,5 +54,5 @@ client.on("message", (message) => {
   }
 });
 // トークンを使ってDiscordにログイン
-client.login();
+client.login(token);
 // token.token
