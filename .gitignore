@@ -1,5 +1,6 @@
 # トークンは公開してはいけない
 *.json
-*.ts
+token.ts
+main.js
 node_modules
 
