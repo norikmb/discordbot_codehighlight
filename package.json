@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "gts lint",
     "clean": "gts clean",
-    "compile": "tsc",
+    "compile": "tsc main.ts",
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
