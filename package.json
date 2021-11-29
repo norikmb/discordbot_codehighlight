@@ -7,5 +7,22 @@
   "devDependencies": {
     "eslint": "^8.2.0",
     "typescript": "^4.4.4"
-  }
+  },
+  "name": "discordbot",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nori3636/discordbot_codehighlight.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nori3636/discordbot_codehighlight/issues"
+  },
+  "homepage": "https://github.com/nori3636/discordbot_codehighlight#readme"
 }
