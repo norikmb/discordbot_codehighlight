@@ -52,6 +52,7 @@ client.once("ready", function () {
     console.log("Ready!");
 });
 var atodemiru = "808566487983587338";
+var test = "800186124613451806";
 client.on("messageReactionAdd", function (reaction, user) { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {
@@ -72,6 +73,9 @@ client.on("messageReactionAdd", function (reaction, user) { return __awaiter(voi
                 return [3 /*break*/, 4];
             case 4:
                 if (reaction.message.channel.id === atodemiru && reaction.count === 1) {
+                    reaction.message.pin();
+                }
+                else if (reaction.message.channel.id === test && reaction.count === 1) {
                     reaction.message.pin();
                 }
                 return [2 /*return*/];

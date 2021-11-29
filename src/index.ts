@@ -17,6 +17,7 @@ client.once("ready", () => {
   console.log("Ready!");
 });
 const atodemiru = "808566487983587338";
+const test = "800186124613451806";
 client.on("messageReactionAdd", async (reaction, user) => {
   console.log("test");
   if (reaction.message.partial) {
@@ -27,6 +28,8 @@ client.on("messageReactionAdd", async (reaction, user) => {
     }
   }
   if (reaction.message.channel.id === atodemiru && reaction.count === 1) {
+    reaction.message.pin();
+  } else if (reaction.message.channel.id === test && reaction.count === 1) {
     reaction.message.pin();
   }
   // console.log(reaction.count);
