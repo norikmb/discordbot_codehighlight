@@ -1,8 +1,5 @@
 import { Client, Intents } from "discord.js";
 import fetch from "node-fetch";
-// import { config } from "dotenv";
-
-// config();
 
 const client = new Client({
   intents: [
@@ -17,44 +14,46 @@ client.once("ready", () => {
   console.log("Ready!");
 });
 client.on("messageReactionAdd", async (reaction, user) => {
-  console.log("test");
   if (reaction.message.partial) {
     try {
       await reaction.message.fetch();
+      if (
+        reaction.message.channel.id === process.env.CHANNEL_ID &&
+        reaction.message.reactions.cache.get("👀")?.count === 2
+      ) {
+        reaction.message.pin();
+        console.log("pin");
+      }
+      console.log(`${reaction.message.reactions.cache.get("👀")?.count}`);
+      console.log(reaction.count);
+      console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
     } catch (error) {
       console.error("Something went wrong when fetching the message: ", error);
     }
   }
-  if (
-    reaction.message.channel.id === process.env.CHANNEL_ID &&
-    reaction.message.reactions.cache.get("👀")?.count === 2
-  ) {
-    reaction.message.pin();
-  }
-  // console.log(`${reaction.message.reactions.cache.get("👀")?.count} emojis`);
-  // console.log(reaction.count);
-  // console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
 });
 
 client.on("messageReactionRemove", async (reaction, user) => {
   if (reaction.message.partial) {
     try {
       await reaction.message.fetch();
+      if (
+        reaction.message.channel.id === process.env.CHANNEL_ID &&
+        reaction.message.reactions.cache.get("👀")?.count === 1
+      ) {
+        reaction.message.unpin();
+        console.log("unpin");
+      }
+      console.log(`${reaction.message.reactions.cache.get("👀")?.count}`);
+      console.log(
+        `${user.username} removed their "${reaction.emoji.name}" reaction.`
+      );
     } catch (error) {
       console.error("Something went wrong when fetching the message: ", error);
     }
   }
-  if (
-    reaction.message.channel.id === process.env.CHANNEL_ID &&
-    reaction.message.reactions.cache.get("👀")?.count === 1
-  ) {
-    reaction.message.unpin();
-  }
-
-  // console.log(
-  //   `${user.username} removed their "${reaction.emoji.name}" reaction.`
-  // );
 });
+
 client.on("messageCreate", async (message) => {
   if (message.author.bot) {
     return;
