@@ -1,8 +1,8 @@
 import { Client, Intents } from "discord.js";
 import fetch from "node-fetch";
-import { config } from "dotenv";
+// import { config } from "dotenv";
 
-config();
+// config();
 
 const client = new Client({
   intents: [
@@ -26,12 +26,12 @@ client.on("messageReactionAdd", async (reaction, user) => {
     }
   }
   if (
-    (reaction.message.channel.id === process.env.channel_1 ||
-      reaction.message.channel.id === process.env.channel_2) &&
-    reaction.count === 1
+    reaction.message.channel.id === process.env.CHANNEL_ID &&
+    reaction.message.reactions.cache.get("👀")?.count === 2
   ) {
     reaction.message.pin();
   }
+  // console.log(`${reaction.message.reactions.cache.get("👀")?.count} emojis`);
   // console.log(reaction.count);
   // console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
 });
@@ -44,10 +44,16 @@ client.on("messageReactionRemove", async (reaction, user) => {
       console.error("Something went wrong when fetching the message: ", error);
     }
   }
+  if (
+    reaction.message.channel.id === process.env.CHANNEL_ID &&
+    reaction.message.reactions.cache.get("👀")?.count === 1
+  ) {
+    reaction.message.unpin();
+  }
 
-  console.log(
-    `${user.username} removed their "${reaction.emoji.name}" reaction.`
-  );
+  // console.log(
+  //   `${user.username} removed their "${reaction.emoji.name}" reaction.`
+  // );
 });
 client.on("messageCreate", async (message) => {
   if (message.author.bot) {
