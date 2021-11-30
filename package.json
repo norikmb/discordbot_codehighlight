@@ -10,7 +10,7 @@
     "dotenv": "^10.0.0"
   },
   "name": "discordbot",
-  "description": "",
+  "description": "kankodori's bot",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
