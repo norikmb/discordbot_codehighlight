@@ -38,8 +38,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var discord_js_1 = require("discord.js");
 var node_fetch_1 = require("node-fetch");
-var dotenv_1 = require("dotenv");
-(0, dotenv_1.config)();
 var client = new discord_js_1.Client({
     intents: [
         discord_js_1.Intents.FLAGS.GUILDS,
