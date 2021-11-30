@@ -51,57 +51,62 @@ var client = new discord_js_1.Client({
 client.once("ready", function () {
     console.log("Ready!");
 });
-var atodemiru = "808566487983587338";
-var test = "800186124613451806";
 client.on("messageReactionAdd", function (reaction, user) { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a, _b;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
             case 0:
-                console.log("test");
                 if (!reaction.message.partial) return [3 /*break*/, 4];
-                _a.label = 1;
+                _c.label = 1;
             case 1:
-                _a.trys.push([1, 3, , 4]);
+                _c.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, reaction.message.fetch()];
             case 2:
-                _a.sent();
+                _c.sent();
+                if (reaction.message.channel.id === process.env.CHANNEL_ID &&
+                    ((_a = reaction.message.reactions.cache.get("👀")) === null || _a === void 0 ? void 0 : _a.count) === 2) {
+                    reaction.message.pin();
+                    console.log("pin");
+                }
+                console.log("" + ((_b = reaction.message.reactions.cache.get("👀")) === null || _b === void 0 ? void 0 : _b.count));
+                console.log(reaction.count);
+                console.log(user.username + " reacted with \"" + reaction.emoji.name + "\".");
                 return [3 /*break*/, 4];
             case 3:
-                error_1 = _a.sent();
+                error_1 = _c.sent();
                 console.error("Something went wrong when fetching the message: ", error_1);
                 return [3 /*break*/, 4];
-            case 4:
-                if (reaction.message.channel.id === atodemiru && reaction.count === 1) {
-                    reaction.message.pin();
-                }
-                else if (reaction.message.channel.id === test && reaction.count === 1) {
-                    reaction.message.pin();
-                }
-                return [2 /*return*/];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
 client.on("messageReactionRemove", function (reaction, user) { return __awaiter(void 0, void 0, void 0, function () {
     var error_2;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a, _b;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
             case 0:
                 if (!reaction.message.partial) return [3 /*break*/, 4];
-                _a.label = 1;
+                _c.label = 1;
             case 1:
-                _a.trys.push([1, 3, , 4]);
+                _c.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, reaction.message.fetch()];
             case 2:
-                _a.sent();
+                _c.sent();
+                if (reaction.message.channel.id === process.env.CHANNEL_ID &&
+                    ((_a = reaction.message.reactions.cache.get("👀")) === null || _a === void 0 ? void 0 : _a.count) === 1) {
+                    reaction.message.unpin();
+                    console.log("unpin");
+                }
+                console.log("" + ((_b = reaction.message.reactions.cache.get("👀")) === null || _b === void 0 ? void 0 : _b.count));
+                console.log(user.username + " removed their \"" + reaction.emoji.name + "\" reaction.");
                 return [3 /*break*/, 4];
             case 3:
-                error_2 = _a.sent();
+                error_2 = _c.sent();
                 console.error("Something went wrong when fetching the message: ", error_2);
                 return [3 /*break*/, 4];
-            case 4:
-                console.log(user.username + " removed their \"" + reaction.emoji.name + "\" reaction.");
-                return [2 /*return*/];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
