@@ -12,8 +12,9 @@ const client = new Client({
 });
 
 client.once('ready', () => {
-	console.log('Ready!');
+	console.log('Uo･ｪ･oU');
 });
+
 client.on('messageReactionAdd', async (reaction, user) => {
 	console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
 	reaction.message
@@ -69,7 +70,7 @@ client.on('messageCreate', async (message) => {
 	const newurl = url.replace(/^(.*\/\/github.com\/.+\/.+\/)blob(\/.+)$/i, '$1raw$2');
 	const paragraph = url.split('#');
 	if (paragraph[1] == null) {
-    console.log('Where you want to display is not existing.');
+		console.log('Where you want to display is not existing.');
 		return;
 	}
 	(async () => {

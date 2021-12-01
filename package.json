@@ -1,33 +1,35 @@
 {
-  "dependencies": {
-    "discord.js": "^13.3.1",
-    "dotenv": "^10.0.0",
-    "node-fetch": "^2.6.6"
-  },
-  "devDependencies": {
-    "eslint": "^8.2.0",
-    "typescript": "^4.4.4",
-    "dotenv": "^10.0.0"
-  },
-  "name": "discordbot",
-  "description": "kankodori's bot",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc src/index.ts && node -r dotenv/config src/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nori3636/discordbot_codehighlight.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "engines": {
-    "node": "16.x"
-  },
-  "bugs": {
-    "url": "https://github.com/nori3636/discordbot_codehighlight/issues"
-  },
-  "homepage": "https://github.com/nori3636/discordbot_codehighlight#readme"
+	"dependencies": {
+		"discord.js": "^13.3.1",
+		"dotenv": "^10.0.0",
+		"node-fetch": "^2.6.6"
+	},
+	"devDependencies": {
+		"eslint": "^8.2.0",
+		"typescript": "^4.4.4",
+		"dotenv": "^10.0.0"
+	},
+	"name": "discordbot",
+	"description": "kankodori's bot",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc",
+		"dev": "npm run build && node -r dotenv/config dest/index.js",
+		"start": "npm run build && node dest/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nori3636/discordbot_codehighlight.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"engines": {
+		"node": "16.x"
+	},
+	"bugs": {
+		"url": "https://github.com/nori3636/discordbot_codehighlight/issues"
+	},
+	"homepage": "https://github.com/nori3636/discordbot_codehighlight#readme"
 }
