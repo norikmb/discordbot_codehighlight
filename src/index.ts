@@ -20,13 +20,14 @@ client.on('messageReactionAdd', async (reaction, user) => {
 	reaction.message
 		.fetch()
 		.then(async (message) => {
-			const reaction_count = message.reactions.cache.get('👀')?.count;
+			const reactionCount = message.reactions.cache.get('👀')?.count;
 			if (message.channel.id !== process.env.CHANNEL_ID) {
+				console.log(`${message.channel.id} is not target channel`);
 				return;
 			}
 			console.log('channel is true');
-			console.log(reaction_count);
-			if (reaction_count !== 2) {
+			console.log(reactionCount);
+			if (reactionCount !== 2) {
 				return;
 			}
 			console.log('pin');
@@ -42,13 +43,13 @@ client.on('messageReactionRemove', async (reaction, user) => {
 	reaction.message
 		.fetch()
 		.then(async (message) => {
-			const reaction_count = message.reactions.cache.get('👀')?.count;
+			const reactionCount = message.reactions.cache.get('👀')?.count;
 			if (message.channel.id !== process.env.CHANNEL_ID) {
 				return;
 			}
 			console.log('channel is true');
-			console.log(reaction_count);
-			if (reaction_count !== 1) {
+			console.log(reactionCount);
+			if (reactionCount !== 1) {
 				return;
 			}
 			console.log('unpin');
@@ -96,7 +97,7 @@ client.on('messageCreate', async (message) => {
 			}
 
 			// テンプレートリテラル
-			message.channel.send(` \`\`\`${fileType}\n${sendtext}  \`\`\``);
+			message.channel.send(`\`\`\`${fileType}\n${sendtext}\`\`\``);
 		} catch (error) {
 			console.log(error);
 		}
