@@ -14,45 +14,47 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 client.on('messageReactionAdd', async (reaction, user) => {
+	console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
 	reaction.message
 		.fetch()
 		.then(async (message) => {
 			const reaction_count = message.reactions.cache.get('👀')?.count;
-			if (message.channel.id === process.env.CHANNEL_ID) {
-				console.log('channel is true');
-				console.log(reaction_count);
-				if (reaction_count == 2) {
-					console.log('pin');
-					await message.pin();
-				}
+			if (message.channel.id !== process.env.CHANNEL_ID) {
+				return;
 			}
+			console.log('channel is true');
+			console.log(reaction_count);
+			if (reaction_count !== 2) {
+				return;
+			}
+			console.log('pin');
+			await message.pin();
 		})
 		.catch((e) => {
 			console.error('Something went wrong when fetching the message: ', e);
 		});
-
-	console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
 });
 
 client.on('messageReactionRemove', async (reaction, user) => {
+	console.log(`${user.username} removed their "${reaction.emoji.name}" reaction.`);
 	reaction.message
 		.fetch()
 		.then(async (message) => {
 			const reaction_count = message.reactions.cache.get('👀')?.count;
-			if (message.channel.id === process.env.CHANNEL_ID) {
-				console.log('channel is true');
-				console.log(reaction_count);
-				if (reaction_count == 1) {
-					console.log('unpin');
-					await message.unpin();
-				}
+			if (message.channel.id !== process.env.CHANNEL_ID) {
+				return;
 			}
+			console.log('channel is true');
+			console.log(reaction_count);
+			if (reaction_count !== 1) {
+				return;
+			}
+			console.log('unpin');
+			await message.unpin();
 		})
 		.catch((e) => {
 			console.error('Something went wrong when fetching the message: ', e);
 		});
-
-	console.log(`${user.username} removed their "${reaction.emoji.name}" reaction.`);
 });
 
 client.on('messageCreate', async (message) => {
