@@ -20,12 +20,13 @@ client.on('messageReactionAdd', async (reaction, user) => {
 	reaction.message
 		.fetch()
 		.then(async (message) => {
-			const reactionCount = message.reactions.cache.get('👀')?.count;
+			const reactionCount = message.reactions.cache.get('📌')?.count;
 			if (message.channel.id !== process.env.CHANNEL_ID) {
 				console.log(`${message.channel.id} is not target channel`);
 				return;
 			}
 			console.log('channel is true');
+			console.log(reaction.count);
 			console.log(reactionCount);
 			if (reactionCount !== 2) {
 				return;
@@ -43,7 +44,7 @@ client.on('messageReactionRemove', async (reaction, user) => {
 	reaction.message
 		.fetch()
 		.then(async (message) => {
-			const reactionCount = message.reactions.cache.get('👀')?.count;
+			const reactionCount = message.reactions.cache.get('📌')?.count;
 			if (message.channel.id !== process.env.CHANNEL_ID) {
 				return;
 			}
