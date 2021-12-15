@@ -11,6 +11,8 @@ const client = new Client({
 	partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
 
+const reactPin = process.env.REACT_PIN ?? '📌';
+
 client.once('ready', () => {
 	console.log('Uo･ｪ･oU');
 });
@@ -20,7 +22,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 	reaction.message
 		.fetch()
 		.then(async (message) => {
-			const reactionCount = message.reactions.cache.get('📌')?.count;
+			const reactionCount = message.reactions.cache.get(reactPin)?.count;
 			if (message.channel.id !== process.env.CHANNEL_ID) {
 				console.log(`${message.channel.id} is not target channel`);
 				return;
@@ -44,7 +46,7 @@ client.on('messageReactionRemove', async (reaction, user) => {
 	reaction.message
 		.fetch()
 		.then(async (message) => {
-			const reactionCount = message.reactions.cache.get('📌')?.count;
+			const reactionCount = message.reactions.cache.get(reactPin)?.count;
 			if (message.channel.id !== process.env.CHANNEL_ID) {
 				return;
 			}
