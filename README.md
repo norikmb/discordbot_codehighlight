@@ -21,3 +21,10 @@ npm install
 ```
 npm start
 ```
+
+## 環境変数
+```
+CHANNEL_ID
+DISCORD_TOKEN
+REACT_PIN
+```
